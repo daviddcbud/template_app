@@ -23,6 +23,8 @@ describe "Authentication" do
       end
     end
     
+    
+    
     describe "with valid info" do
       let(:user) { FactoryGirl.create(:user) }
       before do
@@ -47,6 +49,33 @@ describe "Authentication" do
       end
       
       
+    end
+    
+    describe "with 5 failed attempts" do
+      let(:user) { FactoryGirl.create(:user, failed_password_attempts:4) }
+      before do
+        fill_in "Email", with: user.email
+        fill_in "Password", with: '123'
+        click_button "Sign in"
+        user.reload.failed_password_attempts
+        
+      end
+      it { should have_content('Too many failed attempts')}
+      specify { user.reload.failed_password_attempts  == 5 }
+    end
+    
+    describe "after 5 failed attempts" do
+      let(:user) { FactoryGirl.create(:user, failed_password_attempts:6) }
+      before do
+        fill_in "Email", with: user.email
+        fill_in "Password", with: '123'
+        click_button "Sign in"
+        user.reload.failed_password_attempts
+        
+      end
+      it { should have_content('Too many failed attempts')}
+      it { should have_content(user.email)}
+      specify { user.reload.failed_password_attempts  == 7 }
     end
     
   end

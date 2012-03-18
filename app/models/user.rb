@@ -13,7 +13,7 @@
 
 class User < ActiveRecord::Base
 
-  attr_accessible :name, :email, :password, :password_confirmation
+  attr_accessible :name, :email, :password, :password_confirmation, :failed_password_attempts
   has_secure_password
   validates :name, presence: true, length: {maximum: 50}
   validates :password, length: {minimum: 6}
