@@ -11,7 +11,7 @@
 development:
   adapter: postgresql
   encoding: unicode
-  database: sample_app2_development
+  database: template_app_development
   username: test
   password: test
 # Warning: The database defined as "test" will be erased and
@@ -20,13 +20,13 @@ development:
 test:
   adapter: postgresql
   encoding: unicode
-  database: sample_app2_test
+  database: template_app_test
   username: test
   password: test
   
 production:
   adapter: postgresql
   encoding: unicode
-  database: sample_app2_production
+  database: template_app_production
   username: test
   password: test

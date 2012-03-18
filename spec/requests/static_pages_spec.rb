@@ -3,7 +3,7 @@ require 'spec_helper'
 
 describe "Static Pages" do
 subject { page }  
-  let(:base_title) {"Ruby on Rails"}
+  let(:base_title) {"Template App"}
   describe "Home page" do
     before {visit root_path}
     it { should have_selector('title',
@@ -19,7 +19,7 @@ subject { page }
   
     
     it {should have_selector('h1',
-                                 :text=>'Welcome to the Sample App')}
+                                 :text=>'Welcome to the Template App')}
     
     
     it {should have_selector('li',
